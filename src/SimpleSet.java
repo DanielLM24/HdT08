@@ -8,8 +8,7 @@ Descripción: SimpleSet ejemplo con ArrayList.
 */
 import java.util.ArrayList;
 
-class SimpleSet implements WordSet
-{
+public class SimpleSet<Key extends Comparable<Key>, Value> implements WordSet<Key,Word>{
 	private ArrayList<Word> base;
 	
 	public SimpleSet()
@@ -23,9 +22,9 @@ class SimpleSet implements WordSet
 		if(index == -1) return null;
 		return base.get(index);
 	}
-	
-	public void add(Word wordObject)
-	{
-		base.add(wordObject);
+
+	@Override
+	public void add(Key key, Word wordObject) {
+		base.add(wordObject);		
 	}
 } 

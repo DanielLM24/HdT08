@@ -60,7 +60,7 @@ class WordTypeCounter {
 				// se selecciona la implementacion de acuerdo al tercer parametro pasado en la linea
 				// de comando
 				// =====================================================
-				WordSet words =  WordSetFactory.generateSet(implementacion);
+				WordSet<Word, Word> words =  WordSetFactory.generateSet(implementacion);
 				// =====================================================
 				
 				String line = null;
@@ -74,7 +74,8 @@ class WordTypeCounter {
 					wordParts = line.split("\\.");  // lo que esta entre comillas es una expresión regular.
 					if(wordParts.length == 2)
 					{
-						words.add(new Word(wordParts[0].trim(),wordParts[1].trim()));
+						Word key = new Word(wordParts[0].trim(),wordParts[1].trim());
+						words.add(key,new Word(wordParts[0].trim(),wordParts[1].trim()));
 					}
 					line = wordreader.readLine();
 				}
